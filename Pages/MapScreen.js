@@ -35,7 +35,7 @@ const MapScreen = () => {
                 "https://stud.hosted.hr.nl/1004288/api/gyms.json"
             );
             const json = await response.json();
-            setGyms(json.data);
+            setGyms(data);
             console.log(gyms);
         } catch (error) {
             console.error(error);

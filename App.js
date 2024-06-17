@@ -157,6 +157,8 @@ function Tabs() {
 export default function App() {
     const [mode, setMode] = useState("false");
 
+    
+
     useEffect(() => {
         let eventListener = EventRegister.addEventListener(
             "changeTheme",

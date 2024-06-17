@@ -17,19 +17,27 @@ const CardScreen = ({ navigation }) => {
     const getGyms = async () => {
         try {
             const response = await fetch(
-                "https://stud.hosted.hr.nl/1004288/api/gyms.json"
+                "https://stud.hosted.hr.nl/1004288/api/gyms.json",
+            {
+                method: 'GET',
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            }
             );
             const json = await response.json();
-            setGyms(json.data);
+            setGyms(gyms);
             console.log(gyms);
         } catch (error) {
             console.error(error);
         } finally {
             setLoading(false);
         }
+        return json
     };
 
     useEffect(() => {
+        console.log(setGyms)
         getGyms();
     }, []);
     return (
@@ -40,7 +48,7 @@ const CardScreen = ({ navigation }) => {
                 <ScrollView contentContainerStyle={styles.container}>
                     <Text style={styles.title}>BJJ Gyms</Text>
 
-                    {gyms.map((gym) => {
+                    {gyms?.map((gym) => {
                         return (
                             <TouchableOpacity
                                 key={gym.id}
